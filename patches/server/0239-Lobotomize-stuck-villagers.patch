@@ -5,7 +5,7 @@ Subject: [PATCH] Lobotomize stuck villagers
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/npc/Villager.java b/src/main/java/net/minecraft/world/entity/npc/Villager.java
-index 79184e4721236d4d30f9c516ac0efb56cf06af7d..a188a36d919037fa3177ad7f6930570f5e130fc9 100644
+index 79184e4721236d4d30f9c516ac0efb56cf06af7d..400c50bb852b00fcd4f1a172cfe98a0df28cd920 100644
 --- a/src/main/java/net/minecraft/world/entity/npc/Villager.java
 +++ b/src/main/java/net/minecraft/world/entity/npc/Villager.java
 @@ -142,6 +142,8 @@ public class Villager extends AbstractVillager implements ReputationEventHandler
@@ -30,7 +30,7 @@ index 79184e4721236d4d30f9c516ac0efb56cf06af7d..a188a36d919037fa3177ad7f6930570f
 +        }
 +        if (this.level().getGameTime() % interval == 0) {
 +            // offset Y for short blocks like dirt_path/farmland
-+            this.isLobotomized = !(shouldCheckForTradeLocked && this.getVillagerXp() == 0) && !canTravelFrom(BlockPos.containing(this.position().x, this.getBoundingBox().minY + 0.0625D, this.position().z));
++            this.isLobotomized = !(shouldCheckForTradeLocked && this.getVillagerXp() == 0) && !canTravelFrom(BlockPos.containing(this.position().x, this.getBoundingBox().minY + 0.125D, this.position().z));
 +
 +            if (this.isLobotomized) {
 +                this.notLobotomizedCount = 0;
