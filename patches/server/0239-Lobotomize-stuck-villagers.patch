@@ -5,16 +5,17 @@ Subject: [PATCH] Lobotomize stuck villagers
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/npc/Villager.java b/src/main/java/net/minecraft/world/entity/npc/Villager.java
-index 79184e4721236d4d30f9c516ac0efb56cf06af7d..0883a25919a8477627143cbeb2a6373b29bac4f5 100644
+index 79184e4721236d4d30f9c516ac0efb56cf06af7d..e7976c2ad534c9287d2d3125972420c99d9b7ec7 100644
 --- a/src/main/java/net/minecraft/world/entity/npc/Villager.java
 +++ b/src/main/java/net/minecraft/world/entity/npc/Villager.java
-@@ -89,7 +89,17 @@ import net.minecraft.world.item.trading.MerchantOffer;
+@@ -89,6 +89,16 @@ import net.minecraft.world.item.trading.MerchantOffer;
  import net.minecraft.world.item.trading.MerchantOffers;
  import net.minecraft.world.level.Level;
  import net.minecraft.world.level.ServerLevelAccessor;
 +import net.minecraft.world.level.block.BedBlock;
 +import net.minecraft.world.level.block.Block;
 +import net.minecraft.world.level.block.DirtPathBlock;
++import net.minecraft.world.level.block.FarmBlock;
 +import net.minecraft.world.level.block.GrindstoneBlock;
 +import net.minecraft.world.level.block.LecternBlock;
 +import net.minecraft.world.level.block.MudBlock;
@@ -22,10 +23,8 @@ index 79184e4721236d4d30f9c516ac0efb56cf06af7d..0883a25919a8477627143cbeb2a6373b
 +import net.minecraft.world.level.block.StonecutterBlock;
 +import net.minecraft.world.level.block.state.BlockState;
  import net.minecraft.world.phys.AABB;
-+import org.bukkit.block.data.type.Farmland;
  import org.slf4j.Logger;
  
- // CraftBukkit start
 @@ -142,6 +152,8 @@ public class Villager extends AbstractVillager implements ReputationEventHandler
      }, MemoryModuleType.MEETING_POINT, (entityvillager, holder) -> {
          return holder.is(PoiTypes.MEETING);
@@ -65,7 +64,7 @@ index 79184e4721236d4d30f9c516ac0efb56cf06af7d..0883a25919a8477627143cbeb2a6373b
 +        if (state == null) return feet;
 +        Block block = state.getBlock();
 +        double yOffset = 0;
-+        if (block instanceof Farmland || block instanceof DirtPathBlock) {
++        if (block instanceof FarmBlock || block instanceof DirtPathBlock) {
 +            yOffset = 0.0625;
 +        } else if (block instanceof MudBlock || block instanceof SoulSandBlock || block instanceof LecternBlock || block instanceof GrindstoneBlock) {
 +            yOffset = 0.125;
