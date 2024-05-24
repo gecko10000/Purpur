@@ -5,7 +5,7 @@ Subject: [PATCH] Lobotomize stuck villagers
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/npc/Villager.java b/src/main/java/net/minecraft/world/entity/npc/Villager.java
-index 79184e4721236d4d30f9c516ac0efb56cf06af7d..e7976c2ad534c9287d2d3125972420c99d9b7ec7 100644
+index 79184e4721236d4d30f9c516ac0efb56cf06af7d..cb20e66faa650b01cad726bb5574107583fd1593 100644
 --- a/src/main/java/net/minecraft/world/entity/npc/Villager.java
 +++ b/src/main/java/net/minecraft/world/entity/npc/Villager.java
 @@ -89,6 +89,16 @@ import net.minecraft.world.item.trading.MerchantOffer;
@@ -68,7 +68,7 @@ index 79184e4721236d4d30f9c516ac0efb56cf06af7d..e7976c2ad534c9287d2d3125972420c9
 +            yOffset = 0.0625;
 +        } else if (block instanceof MudBlock || block instanceof SoulSandBlock || block instanceof LecternBlock || block instanceof GrindstoneBlock) {
 +            yOffset = 0.125;
-+        } else if (block instanceof BedBlock || block instanceof StonecutterBlock) {
++        } else if ((block instanceof BedBlock && !isSleeping()) || block instanceof StonecutterBlock) {
 +            yOffset = 0.5625;
 +        }
 +        return BlockPos.containing(this.position().x, this.getBoundingBox().minY + yOffset, this.position().z);
