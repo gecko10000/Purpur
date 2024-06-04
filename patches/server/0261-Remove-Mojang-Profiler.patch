@@ -1772,10 +1772,10 @@ index 384e7b29215cadfa40af07a183a9c9c6a5b4a80a..bf7ef72a7d92db8f11789a6958327064
          if ((this.tickCount + this.getId()) % 120 == 0) {
              Warden.applyDarknessAround(worldserver, this.position(), this, 20);
 diff --git a/src/main/java/net/minecraft/world/entity/npc/Villager.java b/src/main/java/net/minecraft/world/entity/npc/Villager.java
-index fb06eac9604e07e79694e44deb9e38c80974fc7e..8929cd2cfd10223a449d9385c2a8f439f388d475 100644
+index 45d2d2605dc7e31b0b587a240d3266bceb248d55..a8b3f9f5d56932b2d41f56b2082263ab4ac078a1 100644
 --- a/src/main/java/net/minecraft/world/entity/npc/Villager.java
 +++ b/src/main/java/net/minecraft/world/entity/npc/Villager.java
-@@ -371,7 +371,7 @@ public class Villager extends AbstractVillager implements ReputationEventHandler
+@@ -377,7 +377,7 @@ public class Villager extends AbstractVillager implements ReputationEventHandler
      }
      protected void customServerAiStep(boolean inactive) { // Purpur - not final
          // Paper end
@@ -1784,7 +1784,7 @@ index fb06eac9604e07e79694e44deb9e38c80974fc7e..8929cd2cfd10223a449d9385c2a8f439
          // Purpur start
          if (this.level().purpurConfig.villagerLobotomizeEnabled) {
              // treat as inactive if lobotomized
-@@ -383,7 +383,7 @@ public class Villager extends AbstractVillager implements ReputationEventHandler
+@@ -389,7 +389,7 @@ public class Villager extends AbstractVillager implements ReputationEventHandler
              this.getBrain().tick((ServerLevel) this.level(), this); // Paper
          } else if (this.isLobotomized && shouldRestock()) restock();
          // Purpur end
