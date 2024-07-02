@@ -1,0 +1,20 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: gecko10000 <levtey@gmail.com>
+Date: Mon, 1 Jul 2024 22:48:09 -0700
+Subject: [PATCH] Drop extra items
+
+
+diff --git a/src/main/java/net/minecraft/world/entity/player/Player.java b/src/main/java/net/minecraft/world/entity/player/Player.java
+index 43199815ffe3d666577390b96187aa898ceb910e..0d24ad162f53a68faeeed33af9fb3a741a5a6076 100644
+--- a/src/main/java/net/minecraft/world/entity/player/Player.java
++++ b/src/main/java/net/minecraft/world/entity/player/Player.java
+@@ -824,7 +824,8 @@ public abstract class Player extends LivingEntity {
+                     player.getInventory().setItemInHand(cur);
+                 } else {
+                     // Fallback
+-                    player.getInventory().addItem(drop.getItemStack());
++                    player.getInventory().addItem(drop.getItemStack())
++                        .forEach((i, item) -> player.getWorld().dropItemNaturally(player.getLocation().clone().subtract(0.5, 0.5, 0.5), item));
+                 }
+                 return null;
+             }
